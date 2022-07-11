@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HInput : MonoBehaviour
+public class HelicopterInput : MonoBehaviour
 {
-
     public float X { get; private set; }
     public float Y { get; private set; }
-    public bool EngineStart { get; private set; }
+    public bool HasPushedEngineStart { get; private set; }
 
-    // Update is called once per frame
     void Update()
     {
         X = 0f;
         Y = 0f;
-        EngineStart = false;
+        HasPushedEngineStart = false;
 
         X = Input.GetAxis("Horizontal");
         Y = Input.GetAxis("Vertical");
-        EngineStart = Input.GetKeyUp(KeyCode.R);
+        HasPushedEngineStart = Input.GetKeyDown(KeyCode.R);
     }
 }

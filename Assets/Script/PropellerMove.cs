@@ -6,6 +6,7 @@ public class PropellerMove : MonoBehaviour
 {
     private HInput _input;
     private Rigidbody _rigid;
+    public bool turnOn = false;
 
     float Speed = 1.0f;
 
@@ -20,7 +21,20 @@ public class PropellerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            gameObject.transform.Rotate(0, Speed, 0);
+        if (_input.EngineStart)
+        {
+            turnOn = !turnOn;
+        }
 
+        if (turnOn)
+        {
+            TurnOn();
+        }
+
+    }
+
+    private void TurnOn()
+    {
+        gameObject.transform.Rotate(0, Speed, 0);
     }
 }
